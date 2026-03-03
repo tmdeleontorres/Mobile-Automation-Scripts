@@ -1,0 +1,49 @@
+appId: com.angelodev.fitmatecompose
+name: Add a task for March 5, 2026 at 1 PM
+---
+
+# Launch the app
+- launchApp
+
+# Wait for splash screen to finish
+- waitForAnimationToEnd:
+    timeout: 3000
+
+# Tap the FAB to open the Add Task dialog
+- tapOn: "Add Task"
+
+# Confirm dialog opened
+- assertVisible: "ADD NEW TASK"
+
+# Type the task title
+- tapOn:
+    text: "Enter task title"
+- inputText: "Morning Run"
+
+# Close the keyboard before doing anything else
+- hideKeyboard
+
+# Select a category
+- tapOn:
+    text: "Workout"
+
+# Pick March 5 on the calendar (already showing March 2026)
+- tapOn:
+    text: "5"
+
+# Scroll down inside the dialog to reveal the time picker
+- scroll
+
+# Change AM to PM by tapping PM in the AM/PM picker
+- tapOn:
+    text: "PM"
+
+# Scroll to the bottom to reveal the SAVE button
+- scroll
+
+# Tap SAVE
+- tapOn:
+    text: "SAVE"
+
+# Verify the task now appears on the home screen
+- assertVisible: "Morning Run"
